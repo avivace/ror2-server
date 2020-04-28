@@ -1,6 +1,6 @@
 # Risk of Rain 2 dockerized server
 
-![Docker Pulls](https://img.shields.io/docker/pulls/avivace/ror2server?style=flat-square)
+[![Docker Pulls](https://img.shields.io/docker/pulls/avivace/ror2server?style=flat-square)](https://hub.docker.com/r/avivace/ror2server)
 
 Host your Risk of Rain 2 dedicated server anywhere using Docker.
 
