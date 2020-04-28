@@ -8,6 +8,8 @@ LABEL maintainer="fabionicolini48@gmail.com"
 ENV STEAMAPPID 1180760
 ENV STEAMAPPDIR /home/steam/ror2-dedicated
 
+COPY entry.sh ${STEAMAPPDIR}/entry.sh
+
 # Install dependencies and run server
 RUN set -x \
 	&& dpkg --add-architecture i386 \
@@ -30,13 +32,6 @@ RUN set -x \
 		wine-stable=3.0.1~buster \
 	&& ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} \
 		+@sSteamCmdForcePlatformType windows +app_update ${STEAMAPPID} +quit \
-	&& { \
-			echo '#!/bin/bash'; \
-			echo ''; \
-			echo '${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} +@sSteamCmdForcePlatformType windows +app_update ${STEAMAPPID} +quit'; \
-			echo 'cd ${STEAMAPPDIR}'; \
-			echo 'xvfb-run wine ./"Risk of Rain 2.exe"'; \
-		} > ${STEAMAPPDIR}/entry.sh \
 	&& chmod 755 ${STEAMAPPDIR}/entry.sh \
 	&& chown -R steam:steam ${STEAMAPPDIR} \
 	&& apt-get remove --purge -y \
