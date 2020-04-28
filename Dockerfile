@@ -32,7 +32,6 @@ RUN set -x \
 		wine-stable=3.0.1~buster \
 	&& ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} \
 		+@sSteamCmdForcePlatformType windows +app_update ${STEAMAPPID} +quit \
-	&& chmod 755 ${STEAMAPPDIR}/entry.sh \
 	&& chown -R steam:steam ${STEAMAPPDIR} \
 	&& apt-get remove --purge -y \
 		wget \
