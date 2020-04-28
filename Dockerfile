@@ -1,5 +1,5 @@
 ###########################################################
-# Dockerfile that builds a RoR2 Server
+# Dockerfile that sets up a Risk of Rain 2 server
 ###########################################################
 FROM cm2network/steamcmd:root
 
@@ -10,7 +10,8 @@ ENV STEAMAPPDIR /home/steam/ror2-dedicated
 
 COPY entry.sh ${STEAMAPPDIR}/entry.sh
 
-# Install dependencies and run server
+# Prepare the environment
+# We need Wine 3 and xvfb
 RUN set -x \
 	&& dpkg --add-architecture i386 \
 	&& apt-get update \
@@ -46,6 +47,7 @@ WORKDIR $STEAMAPPDIR
 
 VOLUME $STEAMAPPDIR
 
+# Start the server
 ENTRYPOINT ${STEAMAPPDIR}/entry.sh
 
 # Expose ports
