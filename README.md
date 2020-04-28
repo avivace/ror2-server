@@ -1,5 +1,5 @@
 
-# ![icon](2.png) Risk of Rain 2 dockerized server
+# Risk of Rain 2 dockerized server
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/avivace/ror2server?style=flat-square)](https://hub.docker.com/r/avivace/ror2server)
 
