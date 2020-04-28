@@ -11,6 +11,12 @@ ror2-server
 
 You need [Docker](https://docs.docker.com/get-docker/). On Debian you can run `bash debian.sh` to install it.
 
+## Develop
+
+Build with `docker build -t ror2ds .`
+
+Run with `docker run --rm -d -p 27015:27015 -p 27015:27015/udp --name ror2-server ror2ds`
+
 
 ## FAQ
 
