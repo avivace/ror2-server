@@ -3,7 +3,7 @@
 ###########################################################
 FROM cm2network/steamcmd:root
 
-LABEL maintainer="fabionicolini48@gmail.com"
+LABEL authors="Fabio Nicolini <fabionicolini48@gmail.com>, Antonio Vivace <antonio@avivace.com>"
 
 ENV STEAMAPPID 1180760
 ENV STEAMAPPDIR /home/steam/ror2-dedicated
