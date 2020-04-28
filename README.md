@@ -1,4 +1,10 @@
-# Risk of Rain 2 dockerized server
+
+<div align="center">
+    <img src="https://gamepedia.cursecdn.com/riskofrain2_gamepedia_en/thumb/c/c8/Charged_Nano-Bomb.png/128px-Charged_Nano-Bomb.png?version=749364707a1c24b755823a2510dbbd7c" height=100>
+    <h1>Risk of Rain 2 dockerized server </h1>
+    <p>
+    </p>
+</div>
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/avivace/ror2server?style=flat-square)](https://hub.docker.com/r/avivace/ror2server)
 
