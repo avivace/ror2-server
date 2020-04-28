@@ -17,6 +17,7 @@ RUN set -x \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		wget \
 		gnupg2 \
+		xauth \
 	&& wget -nc https://dl.winehq.org/wine-builds/winehq.key \
 	&& apt-key add winehq.key \
 	&& echo "deb https://dl.winehq.org/wine-builds/debian/ buster main" >> /etc/apt/sources.list \
@@ -30,9 +31,10 @@ RUN set -x \
 		wine-stable-i386=3.0.1~buster \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		wine-stable=3.0.1~buster \
+	&& mkdir -p ${STEAMAPPDIR} \
+	&& chown -R steam:steam ${STEAMAPPDIR} \
 	&& ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} \
 		+@sSteamCmdForcePlatformType windows +app_update ${STEAMAPPID} +quit \
-	&& chown -R steam:steam ${STEAMAPPDIR} \
 	&& apt-get remove --purge -y \
 		wget \
 	&& apt-get clean autoclean \
