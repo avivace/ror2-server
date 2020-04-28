@@ -1,22 +1,21 @@
-# ror2-docker-server
+# Risk of Rain 2 dockerized server
 
 Host your Risk of Rain 2 dedicated server anywhere using Docker.
 
+Assuming you have [Docker](https://docs.docker.com/get-docker/) installed:
+
 ```bash
-git clone https://github.com/avivace/ror2-server
-ror2-server
+docker run avivace/ror2server:0.1 -p 27015:27015 -p 27015:27015/udp
 ```
-
-## Prerequisites
-
-You need [Docker](https://docs.docker.com/get-docker/). On Debian you can run `bash debian.sh` to install it.
 
 ## Develop
 
-Build with `docker build -t ror2ds .`
-
-Run with `docker run --rm -d -p 27015:27015 -p 27015:27015/udp --name ror2-server ror2ds`
-
+```bash
+git clone https://github.com/avivace/ror2-server
+cd ror2-server
+docker build -t ror2ds .
+docker run --rm -d -p 27015:27015 -p 27015:27015/udp --name ror2-server ror2ds
+```
 
 ## FAQ
 
