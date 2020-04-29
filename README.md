@@ -39,7 +39,7 @@ cl_password "hello"; connect "SERVER_IP:25000";
 You can pass these additional environment variables to customise your server configuration:
 
 - `R2_PLAYERS`, the maximum number of players
-- `R2_HEARTHBEAT`, set to 0 to not advertise to the master server
+- `R2_HEARTBEAT`, set to 1 to advertise to the master server. If you enable this, remember to append `-p 27016:27016` to your Docker command
 - `R2_HOSTNAME`, the name that will appear in the server browser
 - `R2_PSW`, the password someone must provide to join this server
 
