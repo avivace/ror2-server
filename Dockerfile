@@ -11,12 +11,12 @@ ENV STEAMAPPDIR /home/steam/ror2-dedicated
 # Default server parameters
 ENV R2_PLAYERS 4
 ENV R2_HEARTHBEAT 0
-ENV R2_HOSTNAME A Risk of Rain 2 dedicated server
+ENV R2_HOSTNAME "A Risk of Rain 2 dedicated server"
 ENV R2_PORT 27015
-ENV R2_PSW
+ENV R2_PSW ""
 
 COPY entry.sh ${STEAMAPPDIR}/entry.sh
-
+COPY default_config.cfg ${STEAMAPPDIR}/default_config.cfg
 
 # Prepare the environment
 # We need Wine 3 and xvfb
@@ -27,6 +27,7 @@ RUN set -x \
 		wget \
 		gnupg2 \
 		xauth \
+		gettext \
 	&& wget -nc https://dl.winehq.org/wine-builds/winehq.key \
 	&& apt-key add winehq.key \
 	&& echo "deb https://dl.winehq.org/wine-builds/debian/ buster main" >> /etc/apt/sources.list \
