@@ -1,4 +1,4 @@
-<h1> <img src="https://i.imgur.com/Ucg7IQI.png" height=45> Risk of Rain 2 dockerized server </h1>
+<h1> <img src="https://i.imgur.com/UIQSMEs.png" height=45> Risk of Rain 2 dockerized server </h1>
  
 [![Docker Pulls](https://img.shields.io/docker/pulls/avivace/ror2server?style=flat-square)](https://hub.docker.com/r/avivace/ror2server)
 
