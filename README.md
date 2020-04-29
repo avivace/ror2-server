@@ -39,7 +39,7 @@ cl_password "hello"; connect "SERVER_IP:25000";
 You can pass these additional environment variables to customise your server configuration:
 
 - `R2_PLAYERS`, the maximum number of players
-- `R2_HEARTBEAT`, set to 1 to advertise to the master server. If you enable this, remember to append `-p 27016:27016` to your Docker command
+- `R2_HEARTBEAT`, set to 1 to advertise to the master server (not currently working). If you enable this, you need to append `-p 27016:27016` to your Docker command.
 - `R2_HOSTNAME`, the name that will appear in the server browser
 - `R2_PSW`, the password someone must provide to join this server
 
@@ -64,7 +64,11 @@ wmctrl -R Risk && xdotool key ctrl+alt+grave
 
 ### Known Issues
 
-For some reason, `winecfg` returns before completing the creation of the configuration files, making any subsequent call of `xvfb` fail. Current (trash) workaround is to just wait 5 seconds before firing Wine in the virtual framebuffer.
+- There's no way to make the Server Browser discover and correctly report your server. This is probably related to Steamworks not being detected by the server. If you manage to make that work while running under Wine, please ping us.
+- For some reason, `winecfg` returns before completing the creation of the configuration files, making any subsequent call of `xvfb` fail. The current (trash) workaround is to just wait 5 seconds before firing Wine in the virtual framebuffer.
 
+### Acknowledgements
+
+Thanks to [InfernalPlacebo](https://github.com/InfernalPlacebo) for the (unsuccesful, for now) troubleshooting on the server browser feature.
 
 Built by [Davide Casella](https://github.com/dcasella), [Fabio Nicolini](https://github.com/fnicolini), [Antonio Vivace](https://github.com/avivace)
