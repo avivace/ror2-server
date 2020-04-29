@@ -56,6 +56,8 @@ git clone https://github.com/avivace/ror2-server
 cd ror2-server
 docker build -t ror2ds .
 docker run --rm -d -p 27015:27015/udp --name ror2-server ror2ds
+# See container output with:
+docker logs -f ror2-server
 ```
 
 For some reason, `winecfg` returns before completing the creation of the configuration files, making any subsequent call of `xvfb` fail. Current (trash) workaround is to just wait 5 seconds before firing the wine in the virtual framebuffer.
