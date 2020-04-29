@@ -8,7 +8,15 @@ LABEL authors="Fabio Nicolini <fabionicolini48@gmail.com>, Antonio Vivace <anton
 ENV STEAMAPPID 1180760
 ENV STEAMAPPDIR /home/steam/ror2-dedicated
 
+# Default server parameters
+ENV R2_PLAYERS 4
+ENV R2_HEARTHBEAT 0
+ENV R2_HOSTNAME A Risk of Rain 2 dedicated server
+ENV R2_PORT 27015
+ENV R2_PSW
+
 COPY entry.sh ${STEAMAPPDIR}/entry.sh
+
 
 # Prepare the environment
 # We need Wine 3 and xvfb
