@@ -12,7 +12,6 @@ ENV STEAMAPPDIR /home/steam/ror2-dedicated
 ENV R2_PLAYERS 4
 ENV R2_HEARTHBEAT 0
 ENV R2_HOSTNAME "A Risk of Rain 2 dedicated server"
-ENV R2_PORT 27015
 ENV R2_PSW ""
 
 COPY entry.sh ${STEAMAPPDIR}/entry.sh
@@ -60,4 +59,4 @@ VOLUME ${STEAMAPPDIR}
 ENTRYPOINT ${STEAMAPPDIR}/entry.sh
 
 # Expose ports
-EXPOSE ${R2_PORT}/udp
+EXPOSE 27015/udp

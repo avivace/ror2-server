@@ -29,13 +29,12 @@ You can pass these environment variables to customise your server configuration:
 - `R2_PLAYERS` - The maximum number of players
 - `R2_HEARTHBEAT` - Set to 0 to not advertise to the master server
 - `R2_HOSTNAME` - The name that will appear in the server browser
-- `R2_PORT` - The port that the server will bind to. You cannot have multiple server instances with overlapping ports
 - `R2_PSW` - The password someone must provide to join this server
 
 So, if you want to start the server on port 25000 with password `hello`:
 
 ```
-docker run avivace/ror2server:0.1 -p 25000:25000/udp -e R2_PORT='25000' -e R2_PSW='hello'
+docker run avivace/ror2server:0.1 -p 25000:27015/udp -e R2_PSW='hello'
 ```
 
 Then join with:
