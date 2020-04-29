@@ -10,7 +10,7 @@ ENV STEAMAPPDIR /home/steam/ror2-dedicated
 
 # Default server parameters
 ENV R2_PLAYERS 4
-ENV R2_HEARTHBEAT 0
+ENV R2_HEARTBEAT 0
 ENV R2_HOSTNAME "A Risk of Rain 2 dedicated server"
 ENV R2_PSW ""
 
