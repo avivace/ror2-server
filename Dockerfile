@@ -27,6 +27,7 @@ RUN set -x \
 		gnupg2 \
 		xauth \
 		gettext \
+		winbind \
 	&& wget -nc https://dl.winehq.org/wine-builds/winehq.key \
 	&& apt-key add winehq.key \
 	&& echo "deb https://dl.winehq.org/wine-builds/debian/ buster main" >> /etc/apt/sources.list \
