@@ -9,7 +9,7 @@ Host your Risk of Rain 2 dedicated server anywhere using Docker. [Guide on Steam
 Assuming you have [Docker](https://docs.docker.com/get-docker/) installed, on the server:
 
 ```bash
-docker run avivace/ror2server:0.1 -p 27015:27015/udp
+docker run -p 27015:27015/udp avivace/ror2server:0.1
 ```
 
 Players need to start Risk of Rain 2, open the console pressing CTRL + ALT + \` and insert this command:
@@ -27,7 +27,7 @@ By default, the server has no password and runs on UDP port 27015.
 If you want to start the server on port **25000** with password **hello**:
 
 ```
-docker run avivace/ror2server:0.1 -p 25000:27015/udp -e R2_PSW='hello'
+docker run -p 25000:27015/udp avivace/ror2server:0.1 -e R2_PSW='hello'
 ```
 
 Players will then join with:
