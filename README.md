@@ -12,7 +12,7 @@ Assuming you have [Docker](https://docs.docker.com/get-docker/) installed, on th
 docker run -p 27015:27015/udp avivace/ror2server:0.1
 ```
 
-Players need to start Risk of Rain 2, open the console pressing CTRL + ALT + \` and insert this command:
+Players need to start Risk of Rain 2, open the console pressing <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>\`</kbd> and insert this command:
 
 ```
 connect "SERVER_IP:27015";
@@ -49,6 +49,21 @@ You can pass these additional environment variables to customise your server con
 
 Yes, any Linux box works. For decent performance, you need 3 GB of free space and at least 2 GB of RAM.
 
+#####  Can I install mods?
+
+To install and enable mods server side, you can mount your BepInEx folder as volume inside the docker.
+
+E.g.
+
+```bash
+docker run -p 27015:27015/udp avivace/ror2server:0.1 -v $HOST_DIR:/home/steam/ror2-dedicated/BepInEx
+```
+
+### Known Issues
+
+- Currently, reporting to the official server browser requires a patched DLL. See this [issue](https://github.com/avivace/ror2-server/issues/1).
+- For some reason, `winecfg` returns before completing the creation of the configuration files, making any subsequent call of `xvfb` fail. The current (trash) workaround is to just wait 5 seconds before firing Wine in the virtual framebuffer.
+
 ## Develop
 
 ```bash
@@ -56,19 +71,16 @@ git clone https://github.com/avivace/ror2-server
 cd ror2-server
 docker build -t ror2ds .
 docker run --rm -d -p 27015:27015/udp --name ror2-server ror2ds
+
 # See container output with:
 docker logs -f ror2-server
+
 # Open console in RoR
 wmctrl -R Risk && xdotool key ctrl+alt+grave
 ```
 
-### Known Issues
-
-- There's no way to make the Server Browser discover and correctly report your server. This is probably related to Steamworks not being detected by the server. If you manage to make that work while running under Wine, please ping us.
-- For some reason, `winecfg` returns before completing the creation of the configuration files, making any subsequent call of `xvfb` fail. The current (trash) workaround is to just wait 5 seconds before firing Wine in the virtual framebuffer.
-
 ### Acknowledgements
 
-Thanks to [InfernalPlacebo](https://github.com/InfernalPlacebo) for the (unsuccesful, for now) troubleshooting on the server browser feature.
+Thanks to [InfernalPlacebo](https://github.com/InfernalPlacebo) and [Vam-Jam](https://github.com/Vam-Jam).
 
-Built by [Davide Casella](https://github.com/dcasella), [Fabio Nicolini](https://github.com/fnicolini), [Antonio Vivace](https://github.com/avivace)
+Built by [Manuele](https://github.com/dubvulture), [Davide Casella](https://github.com/dcasella), [Fabio Nicolini](https://github.com/fnicolini), [Antonio Vivace](https://github.com/avivace).
