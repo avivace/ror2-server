@@ -27,7 +27,7 @@ By default, the server has no password and runs on UDP port 27015.
 If you want to start the server on port **25000** with password **hello**:
 
 ```
-docker run -p 25000:27015/udp avivace/ror2server:0.1 -e R2_PSW='hello'
+docker run -p 25000:27015/udp -e R2_PSW='hello' avivace/ror2server:0.1
 ```
 
 Players will then join with:
