@@ -9,7 +9,7 @@ Host your Risk of Rain 2 dedicated server anywhere using Docker. [Guide on Steam
 Assuming you have [Docker](https://docs.docker.com/get-docker/) installed, on the server:
 
 ```bash
-docker run -p 27015:27015/udp avivace/ror2server:0.1
+docker run -p 27015:27015/udp avivace/ror2server:latest
 ```
 
 Players need to start Risk of Rain 2, open the console pressing <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>\`</kbd> and insert this command:
@@ -27,7 +27,7 @@ By default, the server has no password and runs on UDP port 27015.
 If you want to start the server on port **25000** with password **hello**:
 
 ```
-docker run -p 25000:27015/udp -e R2_PSW='hello' avivace/ror2server:0.1
+docker run -p 25000:27015/udp -e R2_PSW='hello' avivace/ror2server:latest
 ```
 
 Players will then join with:
@@ -56,7 +56,7 @@ To install and enable mods server side, you can mount your BepInEx folder as vol
 E.g.
 
 ```bash
-docker run -p 27015:27015/udp avivace/ror2server:0.1 -v $HOST_DIR:/home/steam/ror2-dedicated/BepInEx
+docker run -p 27015:27015/udp avivace/ror2server:latest -v $HOST_DIR:/home/steam/ror2-dedicated/BepInEx
 ```
 
 ### Known Issues
