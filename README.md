@@ -39,9 +39,10 @@ cl_password "hello"; connect "SERVER_IP:25000";
 You can pass these additional environment variables to customise your server configuration:
 
 - `R2_PLAYERS`, the maximum number of players
-- `R2_HEARTBEAT`, set to 1 to advertise to the master server (not currently working). If you enable this, you need to append `-p 27016:27016` to your Docker command.
+- `R2_HEARTBEAT`, set to 1 to advertise to the master server (not currently working). If you enable this, you need to add `-p 27016:27016` to your Docker command.
 - `R2_HOSTNAME`, the name that will appear in the server browser
 - `R2_PSW`, the password someone must provide to join this server
+- `R2_ENABLE_MODS`, boolean flag used for enabling mods (given that they are correctly mounted as described below)
 
 ## FAQ
 
@@ -51,12 +52,14 @@ Yes, any Linux box works. For decent performance, you need 3 GB of free space an
 
 #####  Can I install mods?
 
-To install and enable mods server side, you can mount your BepInEx folder as volume inside the docker.
+To install and enable mods server side, you'll need a directory containing:
+- BepInEx folder with the desired mods
+- `doorstop_config.ini` and `winhttp.dll` (both shipped with the BepInEx version you're using)
 
-E.g.
+After that you're ready to start your server as follows:
 
 ```bash
-docker run -p 27015:27015/udp avivace/ror2server:latest -v $HOST_DIR:/home/steam/ror2-dedicated/BepInEx
+docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/mods -e R2_ENABLE_MODS=true avivace/ror2server:latest
 ```
 
 ### Known Issues
