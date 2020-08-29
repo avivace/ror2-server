@@ -13,9 +13,7 @@ ENV R2_PLAYERS 4
 ENV R2_HEARTBEAT 0
 ENV R2_HOSTNAME "A Risk of Rain 2 dedicated server"
 ENV R2_PSW ""
-
-COPY entry.sh ${STEAMAPPDIR}/entry.sh
-COPY default_config.cfg ${STEAMAPPDIR}/default_config.cfg
+ENV R2_ENABLE_MODS false
 
 # Prepare the environment
 # We need Wine 3 and xvfb
@@ -41,6 +39,7 @@ RUN set -x \
 		wine-stable-i386=3.0.1~buster \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		wine-stable=3.0.1~buster \
+	&& mkdir -p ${STEAMAPPDIR} \
 	&& chown -R steam:steam ${STEAMAPPDIR} \
 	&& ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} \
 		+@sSteamCmdForcePlatformType windows +app_update ${STEAMAPPID} +quit \
@@ -54,6 +53,9 @@ RUN set -x \
 	&& rm -rf /var/lib/apt/lists/*
 
 USER steam
+
+COPY --chown=steam:root entry.sh ${STEAMAPPDIR}/entry.sh
+COPY --chown=steam:root default_config.cfg ${STEAMAPPDIR}/default_config.cfg
 
 WORKDIR ${STEAMAPPDIR}
 
