@@ -69,7 +69,6 @@ docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/m
 
 ### Known Issues
 
-- Currently, reporting to the official server browser requires a patched DLL. See this [issue](https://github.com/avivace/ror2-server/issues/1).
 - For some reason, `winecfg` returns before completing the creation of the configuration files, making any subsequent call of `xvfb` fail. The current (trash) workaround is to just wait 5 seconds before firing Wine in the virtual framebuffer.
 
 ## Develop
