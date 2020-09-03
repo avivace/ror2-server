@@ -47,7 +47,7 @@ You can pass these additional environment variables to customise your server con
 - `R2_PSW`, the password someone must provide to join this server;
 - `R2_ENABLE_MODS`, set to `1` to enable mod support (given you mounted the mod folders as described below).
 
-Just one or more `-e VARIABLENAME=VALUE` to your Docker command.
+Append one or more `-e VARIABLENAME=VALUE` to your Docker command to set environment variables.
 
 ## Mod support
 
