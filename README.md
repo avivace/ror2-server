@@ -2,7 +2,10 @@
  
 [![Docker Pulls](https://img.shields.io/docker/pulls/avivace/ror2server?style=flat-square)](https://hub.docker.com/r/avivace/ror2server)
 
-Host your Risk of Rain 2 dedicated server anywhere using Docker. [Guide on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=2077564253).
+Host your Risk of Rain 2 dedicated server anywhere using Docker. Powered by Wine and the X virtual framebuffer to seamlessy run on Linux machines.
+
+[Guide on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=2077564253).
+
 
 ## Quickstart
 
@@ -38,11 +41,26 @@ cl_password "hello"; connect "SERVER_IP:25000";
 
 You can pass these additional environment variables to customise your server configuration:
 
-- `R2_PLAYERS`, the maximum number of players
-- `R2_HEARTBEAT`, set to 1 to advertise to the master server (not currently working). If you enable this, you need to add `-p 27016:27016` to your Docker command.
-- `R2_HOSTNAME`, the name that will appear in the server browser
-- `R2_PSW`, the password someone must provide to join this server
-- `R2_ENABLE_MODS`, boolean flag used for enabling mods (given that they are correctly mounted as described below)
+- `R2_PLAYERS`, the maximum number of players;
+- `R2_HEARTBEAT`, set to `1` to advertise to the master server and list your server in the internal server browser. If you enable this, append `-p 27016:27016` to your Docker command;
+- `R2_HOSTNAME`, the name that will appear in the server browser;
+- `R2_PSW`, the password someone must provide to join this server;
+- `R2_ENABLE_MODS`, set to `1` to enable mod support (given you mounted the mod folders as described below).
+
+Just one or more `-e VARIABLENAME=VALUE` to your Docker command.
+
+## Mod support
+
+To install and enable mods server side, you'll need a directory containing:
+
+- The **BepInEx** folder with the desired mods
+- The `doorstop_config.ini` and `winhttp.dll` files, both shipped with the BepInEx version you intend to use
+
+Supposing your mod directory is in `/path/to/directory`, you can start your server as follows:
+
+```bash
+docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/mods -e R2_ENABLE_MODS=true avivace/ror2server:latest
+```
 
 ## FAQ
 
@@ -50,24 +68,27 @@ You can pass these additional environment variables to customise your server con
 
 Yes, any Linux box works. For decent performance, you need 3 GB of free space and at least 2 GB of RAM.
 
-#####  Can I install mods?
+##### Server is stuck at "Unloading unused Assets"
 
-To install and enable mods server side, you'll need a directory containing:
-- BepInEx folder with the desired mods
-- `doorstop_config.ini` and `winhttp.dll` (both shipped with the BepInEx version you're using)
+That line is usually the last one of the initialization process. It usually means your server is working correctly, that is not a blocking error. If you can't connect to your server at that point, it's probably a network issue.
 
-After that you're ready to start your server as follows:
+##### Server is stuck at "Could not load config ..."
 
-```bash
-docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/mods -e R2_ENABLE_MODS=true avivace/ror2server:latest
+If you see something like this:
+
+```
+Could not load config /Config/server_pregame.cfg: Could not find file "Z:\home\steam\ror2-dedicated\Risk of Rain 2_Data\Config\server_pregame.cfg"
 ```
 
-### Known Issues
+Beware that this kind of warning messages is non blocking, they are just warnings and the server initialization will proceed as normal.
 
-- Currently, reporting to the official server browser requires a patched DLL. See this [issue](https://github.com/avivace/ror2-server/issues/1).
-- For some reason, `winecfg` returns before completing the creation of the configuration files, making any subsequent call of `xvfb` fail. The current (trash) workaround is to just wait 5 seconds before firing Wine in the virtual framebuffer.
+### Acknowledgements
 
-## Develop
+Thanks to [InfernalPlacebo](https://github.com/InfernalPlacebo) and [Vam-Jam](https://github.com/Vam-Jam).
+
+Built by [Manuele](https://github.com/dubvulture), [Davide Casella](https://github.com/dcasella), [Fabio Nicolini](https://github.com/fnicolini), [Antonio Vivace](https://github.com/avivace).
+
+### Development commands
 
 ```bash
 git clone https://github.com/avivace/ror2-server
@@ -81,9 +102,3 @@ docker logs -f ror2-server
 # Open console in RoR
 wmctrl -R Risk && xdotool key ctrl+alt+grave
 ```
-
-### Acknowledgements
-
-Thanks to [InfernalPlacebo](https://github.com/InfernalPlacebo) and [Vam-Jam](https://github.com/Vam-Jam).
-
-Built by [Manuele](https://github.com/dubvulture), [Davide Casella](https://github.com/dcasella), [Fabio Nicolini](https://github.com/fnicolini), [Antonio Vivace](https://github.com/avivace).
