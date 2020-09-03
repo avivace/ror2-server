@@ -61,7 +61,7 @@ To install and enable mods server side, you'll need a directory containing:
 Supposing your mod directory is in `/path/to/directory`, you can start your server as follows:
 
 ```bash
-docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/mods -e R2_ENABLE_MODS=true avivace/ror2server:latest
+docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/mods -e R2_ENABLE_MODS=1 avivace/ror2server:latest
 ```
 
 ## FAQ
