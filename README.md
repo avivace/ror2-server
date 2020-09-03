@@ -27,7 +27,7 @@ By default, the server has no password and runs on UDP port 27015.
 If you want to start the server on port **25000** with password **hello**:
 
 ```
-docker run -p 25000:27015/udp -e R2_PSW='hello' avivace/ror2server:latest
+docker run -p 25000:25000/udp -e R2_PSW='hello' -e R2_SV_PORT=25000 avivace/ror2server:latest
 ```
 
 Players will then join with:
@@ -35,14 +35,19 @@ Players will then join with:
 ```
 cl_password "hello"; connect "SERVER_IP:25000";
 ```
-
+If you additionally wanted to list it in the server browser and give it a name of **Cool Server**:
+```
+docker run -p 25000:25000/udp -p 25001:25001 -e R2_HEARTBEAT=1 -e R2_HOSTNAME='Cool Server' -e R2_PSW='hello' -e R2_SV_PORT=25000 -e R2_QUERY_PORT=25001 avivace/ror2server:latest
+```
 You can pass these additional environment variables to customise your server configuration:
 
-- `R2_PLAYERS`, the maximum number of players
-- `R2_HEARTBEAT`, set to 1 to advertise to the master server (not currently working). If you enable this, you need to add `-p 27016:27016` to your Docker command.
+- `R2_PLAYERS`, the maximum number of players default is 4, max is 16.
+- `R2_HEARTBEAT`, set to 1 to advertise to the master server. If you enable this, you need to set the next env variable.
+- `R2_QUERY_PORT`, the listen port for the steamworks connection, needed to list the server in the browser, you need to add -p port:port to your docker command
 - `R2_HOSTNAME`, the name that will appear in the server browser
 - `R2_PSW`, the password someone must provide to join this server
 - `R2_ENABLE_MODS`, boolean flag used for enabling mods (given that they are correctly mounted as described below)
+- `R2_SV_PORT`, the listen port for the server, make sure that this matches your -p port:port/udp Docker command
 
 ## FAQ
 
