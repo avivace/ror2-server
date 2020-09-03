@@ -82,7 +82,7 @@ If you see something like this:
 Could not load config /Config/server_pregame.cfg: Could not find file "Z:\home\steam\ror2-dedicated\Risk of Rain 2_Data\Config\server_pregame.cfg"
 ```
 
-Beware that this kind of warning messages is non blocking, they are just warnings and the server initialization will proceed as normal.
+Be aware that these kind of warning messages are non blocking, they are just warnings and the server initialization will proceed as normal.
 
 ### Acknowledgements
 
