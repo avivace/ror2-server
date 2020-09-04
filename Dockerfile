@@ -14,6 +14,8 @@ ENV R2_HEARTBEAT 0
 ENV R2_HOSTNAME "A Risk of Rain 2 dedicated server"
 ENV R2_PSW ""
 ENV R2_ENABLE_MODS false
+ENV R2_SV_PORT 27015
+ENV R2_QUERY_PORT 27016
 
 # Prepare the environment
 # We need Wine 3 and xvfb
@@ -65,4 +67,6 @@ VOLUME ${STEAMAPPDIR}
 ENTRYPOINT ${STEAMAPPDIR}/entry.sh
 
 # Expose ports
-EXPOSE 27015/udp
+EXPOSE ${R2_SV_PORT}/udp
+EXPOSE ${R2_QUERY_PORT}/udp
+EXPOSE ${R2_QUERY_PORT}/tcp
