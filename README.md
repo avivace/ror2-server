@@ -43,6 +43,8 @@ You can pass these additional environment variables to customise your server con
 
 - `R2_PLAYERS`, the maximum number of players;
 - `R2_HEARTBEAT`, set to `1` to advertise to the master server and list your server in the internal server browser. If you enable this, append `-p 27016:27016` to your Docker command;
+- `R2_QUERY_PORT`, the listen port for the steamworks connection, needed to list the server in the game browser on a alternate port, you need to add -p port:port to your Docker command;
+- `R2_SV_PORT`, the listen port for the game server, needed to list the server in the game browser on a alternate port, you need to add -p port:port to your Docker command;
 - `R2_HOSTNAME`, the name that will appear in the server browser;
 - `R2_PSW`, the password someone must provide to join this server;
 - `R2_ENABLE_MODS`, set to `1` to enable mod support (given you mounted the mod folders as described below).
@@ -59,7 +61,7 @@ To install and enable mods server side, you'll need a directory containing:
 Supposing your mod directory is in `/path/to/directory`, you can start your server as follows:
 
 ```bash
-docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/mods -e R2_ENABLE_MODS=true avivace/ror2server:latest
+docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/mods -e R2_ENABLE_MODS=1 avivace/ror2server:latest
 ```
 
 ## FAQ
@@ -80,7 +82,7 @@ If you see something like this:
 Could not load config /Config/server_pregame.cfg: Could not find file "Z:\home\steam\ror2-dedicated\Risk of Rain 2_Data\Config\server_pregame.cfg"
 ```
 
-Beware that this kind of warning messages is non blocking, they are just warnings and the server initialization will proceed as normal.
+Be aware that these kind of warning messages are non blocking, they are just warnings and the server initialization will proceed as normal.
 
 ### Acknowledgements
 
