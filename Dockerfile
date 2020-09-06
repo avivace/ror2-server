@@ -69,4 +69,3 @@ ENTRYPOINT ${STEAMAPPDIR}/entry.sh
 # Expose ports
 EXPOSE ${R2_SV_PORT}/udp
 EXPOSE ${R2_QUERY_PORT}/udp
-EXPOSE ${R2_QUERY_PORT}/tcp
