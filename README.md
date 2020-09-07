@@ -9,7 +9,7 @@ Host your Risk of Rain 2 dedicated server anywhere using Docker. Powered by Wine
 
 ## Quickstart
 
-You need [Docker](https://docs.docker.com/get-docker/) installed. On Debian systems, you can use the [bootstrap_debian.sh](bootstrap_debian.sh) script to set up Docker and some other dependencies.
+You need [Docker](https://docs.docker.com/get-docker/) installed. On Debian systems, you can use the [bootstrap_debian.sh](https://github.com/avivace/ror2-server/blob/master/boostrap_debian.sh) script to set up Docker and some other dependencies.
 
 Run the Docker container with:
 
@@ -51,7 +51,7 @@ You can pass these additional environment variables to customise your server con
 - `R2_QUERY_PORT`, the listen port for the Steamworks connection, needed to list the server in the game browser on a alternate port, you need to add -p port:port/udp to your Docker command;
 - `R2_SV_PORT`, the listen port for the game server, needed to list the server in the game browser on a alternate port, you also need to add -`p port:port/udp` to your Docker command;
 
-You shouldn't need to change `R2_QUERY_PORT` and `R2_SV_PORT` if you are not planning on host more server instances on the same machine/IP.
+You shouldn't need to change `R2_QUERY_PORT` and `R2_SV_PORT` if you are not planning on hosting more server instances on the same machine/IP.
 
 Append one or more `-e VARIABLENAME=VALUE` to your Docker command to set environment variables.
 
