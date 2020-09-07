@@ -9,7 +9,9 @@ Host your Risk of Rain 2 dedicated server anywhere using Docker. Powered by Wine
 
 ## Quickstart
 
-Assuming you have [Docker](https://docs.docker.com/get-docker/) installed, on the server:
+You need [Docker](https://docs.docker.com/get-docker/) installed. On Debian systems, you can use the [bootstrap_debian.sh](bootstrap_debian.sh) script to set up Docker and some other dependencies.
+
+Run the Docker container with:
 
 ```bash
 docker run -p 27015:27015/udp avivace/ror2server:latest
@@ -41,15 +43,23 @@ cl_password "hello"; connect "SERVER_IP:25000";
 
 You can pass these additional environment variables to customise your server configuration:
 
-- `R2_PLAYERS`, the maximum number of players;
-- `R2_HEARTBEAT`, set to `1` to advertise to the master server and list your server in the internal server browser. If you enable this, add `-p 27016:27016/udp` to your Docker command;
-- `R2_QUERY_PORT`, the listen port for the steamworks connection, needed to list the server in the game browser on a alternate port, you need to add -p port:port/udp to your Docker command;
-- `R2_SV_PORT`, the listen port for the game server, needed to list the server in the game browser on a alternate port, you need to add -p port:port/udp to your Docker command;
+- `R2_PLAYERS`, the maximum number of players, default is 4;
+- `R2_HEARTBEAT`, set to `1` to **advertise to the master server and list your server** in the internal server browser. If you enable this, add `-p 27016:27016/udp` to your Docker command;
 - `R2_HOSTNAME`, the name that will appear in the server browser;
 - `R2_PSW`, the password someone must provide to join this server;
 - `R2_ENABLE_MODS`, set to `1` to enable mod support (given you mounted the mod folders as described below).
+- `R2_QUERY_PORT`, the listen port for the Steamworks connection, needed to list the server in the game browser on a alternate port, you need to add -p port:port/udp to your Docker command;
+- `R2_SV_PORT`, the listen port for the game server, needed to list the server in the game browser on a alternate port, you also need to add -`p port:port/udp` to your Docker command;
+
+You shouldn't need to change `R2_QUERY_PORT` and `R2_SV_PORT` if you are not planning on host more server instances on the same machine/IP.
 
 Append one or more `-e VARIABLENAME=VALUE` to your Docker command to set environment variables.
+
+To check if your server is correctly getting announced to the Steamworks network, you can use this API call:
+
+```
+http://api.steampowered.com/ISteamApps/GetServersAtAddress/v0001/?format=json&addr=<IP_ADDRESS>
+```
 
 ## Mod support
 
@@ -63,6 +73,8 @@ Supposing your mod directory is in `/path/to/directory`, you can start your serv
 ```bash
 docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/mods -e R2_ENABLE_MODS=1 avivace/ror2server:latest
 ```
+
+Beware that some mods requires the client to also have them installed.
 
 ## FAQ
 
@@ -84,6 +96,11 @@ Could not load config /Config/server_pregame.cfg: Could not find file "Z:\home\s
 
 Be aware that these kind of warning messages are non blocking, they are just warnings and the server initialization will proceed as normal.
 
+##### Can I host more server instances on the same machine/IP?
+
+Yes, change `R2_QUERY_PORT` and `R2_SV_PORT` accordingly.
+
+
 ### Acknowledgements
 
 Thanks to [InfernalPlacebo](https://github.com/InfernalPlacebo) and [Vam-Jam](https://github.com/Vam-Jam).
@@ -101,6 +118,6 @@ docker run --rm -d -p 27015:27015/udp --name ror2-server ror2ds
 # See container output with:
 docker logs -f ror2-server
 
-# Open console in RoR
+# Open console in RoR on Linux from CLI
 wmctrl -R Risk && xdotool key ctrl+alt+grave
 ```
