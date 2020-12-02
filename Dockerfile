@@ -39,6 +39,7 @@ RUN set -x \
 		lib32gcc1 \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		wine-stable \
+	&& mkdir -p ${STEAMAPPDIR} \
 	&& chown -R steam:steam ${STEAMAPPDIR} \
 	&& ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} \
 		+@sSteamCmdForcePlatformType windows +app_update ${STEAMAPPID} +quit \
