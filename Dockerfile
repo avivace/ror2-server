@@ -31,17 +31,14 @@ RUN set -x \
 	&& wget -nc https://dl.winehq.org/wine-builds/winehq.key \
 	&& apt-key add winehq.key \
 	&& echo "deb https://dl.winehq.org/wine-builds/debian/ buster main" >> /etc/apt/sources.list \
+	&& echo "deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10 ./" >> /etc/apt/sources.list \
+	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DFA175A75104960E \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		xvfb \
 		lib32gcc1 \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
-		wine-stable-amd64=3.0.1~buster \
-	&& apt-get install -y --no-install-recommends --no-install-suggests \
-		wine-stable-i386=3.0.1~buster \
-	&& apt-get install -y --no-install-recommends --no-install-suggests \
-		wine-stable=3.0.1~buster \
-	&& mkdir -p ${STEAMAPPDIR} \
+		wine-stable \
 	&& chown -R steam:steam ${STEAMAPPDIR} \
 	&& ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} \
 		+@sSteamCmdForcePlatformType windows +app_update ${STEAMAPPID} +quit \
