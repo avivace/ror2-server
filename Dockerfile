@@ -43,8 +43,6 @@ RUN set -x \
 		wine-stable=3.0.1~buster \
 	&& mkdir -p ${STEAMAPPDIR} \
 	&& chown -R steam:steam ${STEAMAPPDIR} \
-	&& ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} \
-		+@sSteamCmdForcePlatformType windows +app_update ${STEAMAPPID} +quit \
 	&& ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir /home/steam/steamworks_sdk \
 		+@sSteamCmdForcePlatformType windows +app_update 1007 +quit \
 	&& cp /home/steam/steamworks_sdk/*64.dll ${STEAMAPPDIR}/ \

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Updating Risk of Rain 2 server..."
+echo "Installing Risk of Rain 2 server..."
 "${STEAMCMDDIR}/steamcmd.sh" +login anonymous +force_install_dir "${STEAMAPPDIR}" +@sSteamCmdForcePlatformType windows +app_update "${STEAMAPPID}" +quit
 
 echo "Generating server configuration..."
