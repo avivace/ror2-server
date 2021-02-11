@@ -61,6 +61,10 @@ To check if your server is correctly getting announced to the Steamworks network
 ```bash
 curl http://api.steampowered.com/ISteamApps/GetServersAtAddress/v0001/?format=json&addr=<IP_ADDRESS>
 ```
+## Known Issues
+
+Be aware that this version suffers from some [known issues](https://github.com/avivace/ror2-server/issues?q=is%3Aissue+is%3Aopen+label%3Abug), probably caused by the executable not running natively on Windows. You should probably [ask the developers](https://twitter.com/riskofrain) for a proper Linux build.
+
 
 ## Mod support
 
