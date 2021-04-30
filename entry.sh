@@ -8,9 +8,10 @@ envsubst < "default_config.cfg" > "${STEAMAPPDIR}/Risk of Rain 2_Data/Config/ser
 
 if [ "${R2_ENABLE_MODS}" = 1 ]; then
     echo "Setting up mods..."
-    cp -r ${STEAMAPPDIR}/mods/BepInEx             ${STEAMAPPDIR}/BepInEx
-    cp    ${STEAMAPPDIR}/mods/doorstop_config.ini ${STEAMAPPDIR}/doorstop_config.ini
-    cp    ${STEAMAPPDIR}/mods/winhttp.dll         ${STEAMAPPDIR}/winhttp.dll
+    rm -rf ${STEAMAPPDIR}/BepInEx
+    cp -r  ${MODDIR}/BepInEx             ${STEAMAPPDIR}/BepInEx
+    cp     ${MODDIR}/doorstop_config.ini ${STEAMAPPDIR}/doorstop_config.ini
+    cp     ${MODDIR}/winhttp.dll         ${STEAMAPPDIR}/winhttp.dll
     DLL="winhttp=n,b"
 fi
 

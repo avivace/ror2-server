@@ -7,6 +7,7 @@ LABEL authors="Fabio Nicolini <fabionicolini48@gmail.com>, Antonio Vivace <anton
 
 ENV STEAMAPPID 1180760
 ENV STEAMAPPDIR /home/steam/ror2-dedicated
+ENV MODDIR /home/steam/ror2ds-mods
 
 # Default server parameters
 ENV R2_PLAYERS 4
