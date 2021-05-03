@@ -1,5 +1,5 @@
 <h1> <img src="https://i.imgur.com/UIQSMEs.png" height=45> Risk of Rain 2 dockerized server </h1>
- 
+
 [![Docker Pulls](https://img.shields.io/docker/pulls/avivace/ror2server?style=flat-square)](https://hub.docker.com/r/avivace/ror2server)
 
 Host your Risk of Rain 2 dedicated server anywhere using Docker. Powered by Wine and the X virtual framebuffer to seamlessy run on Linux machines.
@@ -25,7 +25,7 @@ connect "<SERVER_IP>:27015";
 
 Replace `SERVER_IP` with the public IP of the server running the Docker Image.
 
-By default, the server has no password and runs on UDP port 27015. 
+By default, the server has no password and runs on UDP port 27015.
 
 ## Customize configuration
 
@@ -76,7 +76,7 @@ To install and enable mods server side, you'll need a directory containing:
 Supposing your mod directory is in `/path/to/directory`, you can start your server as follows:
 
 ```bash
-docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2-dedicated/mods -e R2_ENABLE_MODS=1 avivace/ror2server:latest
+docker run -p 27015:27015/udp -v /path/to/directory:/home/steam/ror2ds-mods -e R2_ENABLE_MODS=1 avivace/ror2server:latest
 ```
 
 Beware that some mods requires the client to also have them installed.
