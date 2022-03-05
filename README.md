@@ -51,6 +51,9 @@ You can pass these additional environment variables to customise your server con
 - `R2_QUERY_PORT`, the listen port for the Steamworks connection, needed to list the server in the game browser on a alternate port, you need to add `-p <PORT>:<PORT>/udp` to your Docker command;
 - `R2_SV_PORT`, the listen port for the game server, needed to list the server in the game browser on a alternate port, you also need to add `-p <PORT>:<PORT>/udp` to your Docker command.
 - `R2_TAGS`, the tags the server will have in the server browser.
+- `R2_GAMEMODE`, the type of gamemode for the run, defaulting to `ClassicRun`. Supported options:
+    - `ClassicRun` (Standard)
+    - `InfiniteTowerRun` (Simulacrum)
 
 You shouldn't need to change `R2_QUERY_PORT` and `R2_SV_PORT` if you are not planning on hosting more server instances on the same machine/IP.
 

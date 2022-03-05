@@ -17,6 +17,7 @@ ENV R2_PSW ""
 ENV R2_ENABLE_MODS false
 ENV R2_SV_PORT 27015
 ENV R2_QUERY_PORT 27016
+ENV R2_GAMEMODE "ClassicRun"
 
 # Prepare the environment
 # We need Wine 3 and xvfb
