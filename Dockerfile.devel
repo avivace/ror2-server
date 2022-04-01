@@ -5,7 +5,8 @@ FROM steamcmd/steamcmd:ubuntu-20
 
 LABEL authors="Fabio Nicolini <fabionicolini48@gmail.com>, Manuel Rota <manuel.rota@protonmail.ch>, Antonio Vivace <antonio@avivace.com>"
 
-ENV WINE_VER "6.0.3~focal-1"
+ENV WINE_REL "devel"
+ENV WINE_VER "7.5~focal-1"
 ENV STEAMCMD /usr/bin/steamcmd
 ENV STEAMAPPID 1180760
 ENV STEAMAPPDIR /root/ror2-dedicated
@@ -39,10 +40,10 @@ RUN set -x \
         xvfb \
         lib32gcc1 \
     && apt-get install -y --install-recommends --no-install-suggests \
-        winehq-stable=${WINE_VER} \
-        wine-stable=${WINE_VER} \
-        wine-stable-amd64=${WINE_VER} \
-        wine-stable-i386=${WINE_VER} \
+        winehq-${WINE_REL}=${WINE_VER} \
+        wine-${WINE_REL}=${WINE_VER} \
+        wine-${WINE_REL}-amd64=${WINE_VER} \
+        wine-${WINE_REL}-i386=${WINE_VER} \
     && mkdir -p "${STEAMAPPDIR}" \
     && "${STEAMCMD}" +force_install_dir /home/steam/steamworks_sdk +login anonymous \
         +@sSteamCmdForcePlatformType windows +app_update 1007 +quit \

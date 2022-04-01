@@ -10,12 +10,12 @@ jobs:
     strategy:
       matrix:
         include:
-           - imagename: Dockerfile.vanilla
-             tagname: vanilla
-           - imagename: Dockerfile.wine6
-             tagname: wine6
-           - imagename: Dockerfile.wine7
-             tagname: wine7
+           - imagename: Dockerfile.stable
+             tagname: stable
+           - imagename: Dockerfile.devel
+             tagname: devel
+           - imagename: Dockerfile.staging
+             tagname: staging
     runs-on: ubuntu-latest
     steps:
       -
