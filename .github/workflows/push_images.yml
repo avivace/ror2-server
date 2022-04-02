@@ -10,12 +10,24 @@ jobs:
     strategy:
       matrix:
         include:
-           - imagename: Dockerfile.stable
-             tagname: stable
-           - imagename: Dockerfile.devel
-             tagname: devel
-           - imagename: Dockerfile.staging
-             tagname: staging
+          -
+            file: Dockerfile
+            tags: avivace/ror2server:stable,avivace/ror2server:latest
+            build-args: |
+              WINE_REL=stable
+              WINE_VER=7.0.0.0~focal-1
+          -
+            file: Dockerfile
+            tags: avivace/ror2server:devel
+            build-args: |
+              WINE_REL=devel
+              WINE_VER=7.5~focal-1
+          -
+            file: Dockerfile
+            tags: avivace/ror2server:staging
+            build-args: |
+              WINE_REL=staging
+              WINE_VER=7.5~focal-1
     runs-on: ubuntu-latest
     steps:
       -
@@ -26,7 +38,7 @@ jobs:
         uses: docker/setup-buildx-action@v1
       -
         name: Login to DockerHub
-        uses: docker/login-action@v1 
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -34,6 +46,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          file: ${{ matrix.imagename }}
+          file: ${{ matrix.file }}
           push: true
-          tags: avivace/ror2server:${{ matrix.tagname }}
+          tags: ${{ matrix.tags }}
+          build-args: ${{ matrix.build-args }}

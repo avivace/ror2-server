@@ -5,8 +5,9 @@ FROM steamcmd/steamcmd:ubuntu-20
 
 LABEL authors="Fabio Nicolini <fabionicolini48@gmail.com>, Manuel Rota <manuel.rota@protonmail.ch>, Antonio Vivace <antonio@avivace.com>"
 
-ENV WINE_REL "devel"
-ENV WINE_VER "7.5~focal-1"
+ARG WINE_REL="stable"
+ARG WINE_VER="7.0.0.0~focal-1"
+
 ENV STEAMCMD /usr/bin/steamcmd
 ENV STEAMAPPID 1180760
 ENV STEAMAPPDIR /root/ror2-dedicated
