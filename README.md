@@ -106,6 +106,20 @@ Could not load config /Config/server_pregame.cfg: Could not find file "Z:\home\s
 
 Be aware that these kind of warning messages are non blocking, they are just warnings and the server initialization will proceed as normal.
 
+##### What are the other tags other than `latest`?
+
+Here' a table of the main differences, remember that `latest` = `stable`.
+
+|        | `stable`              | `devel`          | `staging`          |
+|--------|-----------------------|------------------|--------------------|
+| `wine` | 7.0.0.0 (wine-stable) | 7.5 (wine-devel) | 7.5 (wine-staging) |
+
+`latest` / `stable` should be the standard solution, but there are cases when you should try the other ones.
+
+Since the RoR2 Server will be downloaded each time the docker container is started, while docker images on dockerhub are built only once (unless we specifically rebuild them), there could be breaking changes which require more up to date versions of wine.
+
+Here's where `devel` and `staging` come into play, they're on a biweekly release schedule (and we'll try updating them accordingly) and they might be temporarely solve any problems you encounter.
+
 
 ### Acknowledgements
 
