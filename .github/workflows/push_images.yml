@@ -12,7 +12,7 @@ jobs:
         include:
           -
             file: Dockerfile
-            tags: avivace/ror2server:stable
+            tags: avivace/ror2server:stable,avivace/ror2server:latest
             build-args: |
               WINE_REL=stable
               WINE_VER=7.0.0.0~focal-1
