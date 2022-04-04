@@ -108,7 +108,7 @@ Be aware that these kind of warning messages are non blocking, they are just war
 
 ##### What are the other tags other than `latest`?
 
-Here' a table of the main differences, remember that `latest` = `stable`.
+Here's a table of the main differences, remember that `latest` = `stable`.
 
 |        | `stable`              | `devel`          | `staging`          |
 |--------|-----------------------|------------------|--------------------|
