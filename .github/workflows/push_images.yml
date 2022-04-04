@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - 'feature/official_steamcmd'
+      - 'master'
 
 jobs:
   docker:
