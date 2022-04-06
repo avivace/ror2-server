@@ -68,6 +68,13 @@ curl http://api.steampowered.com/ISteamApps/GetServersAtAddress/v0001/?format=js
 
 Be aware that this version suffers from some [known issues](https://github.com/avivace/ror2-server/issues?q=is%3Aissue+is%3Aopen+label%3Abug), probably caused by the executable not running natively on Windows. You should probably [ask the developers](https://twitter.com/riskofrain) for a proper Linux build.
 
+Since the RoR2 Server will be downloaded each time the docker container is started, there could be breaking changes which require more up to date versions of wine in order to work correctly. In this case you can try forcing the installation of bleeding-edge wine versions by running:
+```bash
+# wine-devel
+docker run ${your_parameters} -e WINE_REPLACE_REL="devel" avivace/ror2server:latest
+# wine-staging
+docker run ${your_parameters} -e WINE_REPLACE_REL="staging" avivace/ror2server:latest
+```
 
 ## Mod support
 
