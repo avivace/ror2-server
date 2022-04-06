@@ -1,7 +1,28 @@
 #!/bin/bash
 
+function maybe_replace_wine()
+{
+    FOUND=$(dpkg --get-selections | grep "winehq-${WINE_REPLACE_REL}")
+    if [ -z "${FOUND}" ]; then
+        apt-get update
+        apt-get remove --purge -y \
+            winehq-${WINE_REL}=${WINE_VER} \
+            wine-${WINE_REL}=${WINE_VER} \
+            wine-${WINE_REL}-amd64=${WINE_VER} \
+            wine-${WINE_REL}-i386=${WINE_VER}
+        apt-get install -y --install-recommends --no-install-suggests \
+            winehq-${WINE_REPLACE_REL} \
+            wine-${WINE_REPLACE_REL} \
+            wine-${WINE_REPLACE_REL}-amd64 \
+            wine-${WINE_REPLACE_REL}-i386
+        apt-get clean autoclean
+        apt-get autoremove -y
+    fi
+}
+
 function execute()
 {
+    maybe_replace_wine
     echo "Installing Risk of Rain 2 server..."
     "${STEAMCMD}" +force_install_dir "${STEAMAPPDIR}" +login anonymous +@sSteamCmdForcePlatformType windows +app_update "${STEAMAPPID}" +quit
 

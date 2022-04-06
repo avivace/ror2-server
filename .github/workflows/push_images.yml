@@ -12,22 +12,7 @@ jobs:
         include:
           -
             file: Dockerfile
-            tags: avivace/ror2server:stable,avivace/ror2server:latest
-            build-args: |
-              WINE_REL=stable
-              WINE_VER=7.0.0.0~focal-1
-          -
-            file: Dockerfile
-            tags: avivace/ror2server:devel
-            build-args: |
-              WINE_REL=devel
-              WINE_VER=7.5~focal-1
-          -
-            file: Dockerfile
-            tags: avivace/ror2server:staging
-            build-args: |
-              WINE_REL=staging
-              WINE_VER=7.5~focal-1
+            tags: avivace/ror2server:latest
     runs-on: ubuntu-latest
     steps:
       -
@@ -49,4 +34,3 @@ jobs:
           file: ${{ matrix.file }}
           push: true
           tags: ${{ matrix.tags }}
-          build-args: ${{ matrix.build-args }}

@@ -23,6 +23,11 @@ ENV R2_SV_PORT 27015
 ENV R2_QUERY_PORT 27016
 ENV R2_GAMEMODE "ClassicRun"
 
+ENV WINE_REL=$WINE_REL
+ENV WINE_VER=$WINE_VER
+# stable, devel, staging
+ENV WINE_REPLACE_REL "stable"
+
 # Prepare the environment
 RUN set -x \
     && dpkg --add-architecture i386 \
