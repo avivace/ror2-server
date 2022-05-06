@@ -25,7 +25,7 @@ connect "<SERVER_IP>:27015";
 
 Replace `SERVER_IP` with the public IP of the server running the Docker Image.
 
-By default, the server has no password and runs on UDP port 27015.
+By default, the server has no password and runs on UDP port 27015. Make sure you have crossplay disabled before joining.
 
 ## Customize configuration
 
