@@ -22,10 +22,40 @@ Players need to start Risk of Rain 2, open the console pressing <kbd>CTRL</kbd> 
 ```
 connect "<SERVER_IP>:27015";
 ```
-
 Replace `SERVER_IP` with the public IP of the server running the Docker Image.
 
 By default, the server has no password and runs on UDP port 27015. Make sure you have crossplay disabled before joining.
+
+
+## Using Docker Compose 🐋
+
+Clone this repo
+
+```
+git clone https://github.com/avivace/ror2-server.git
+
+```
+
+Enter the repo folder and rename the docker-compose.yml.example to just docker-compose.yml
+
+```
+cd ror2server
+cp docker-compose.yml.example docker-compose.yml
+
+```
+
+Edit the docker compose file with the setting you want, and the environments explained [below](#customize-configuration)
+
+```
+vi docker-compose.yml
+
+```
+Build and Run the container
+
+```
+docker compose build && docker compose up -d
+
+```
 
 ## Customize configuration
 
