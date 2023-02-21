@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  discord-musicbot:
+    build: .
+    image: ror2server:latest
+    container_name: ror2server
+    restart: unless-stopped
+    ports:
+      - 25000:25000/udp
+      # - 27016:27016/udp # Needed if the hearbeat is activated 
+    volumes:
+      - ./mods:/root/ror2ds-mods
+    environment:
+      - R2_SV_PORT=25000
+      - R2_PSW='afterlife'
+      # Optional variables
+      # - R2_ENABLE_MODS=1
+      # - R2_HOSTNAME=
+      # - R2_HEARTBEAT=
+      # - R2_QUERY_PORT=
+      # - R2_SV_PORT=
+      # - R2_TAGS=
+      # - R2_GAMEMODE=
