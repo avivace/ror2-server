@@ -93,17 +93,20 @@ Beware that some mods requires the client to also have them installed.
 
 ## FAQ
 
-##### Can I run this on a VPS?
+#### Can I run this on a VPS?
 
 Yes, any Linux box works. For decent performance, you need 3 GB of free space and at least 2 GB of RAM.
 
+#### Server crashes with "NullReferenceException"
 
-##### Server is stuck at "Unloading unused Assets"
+Disable crossplay.
+
+#### Server is stuck at "Unloading unused Assets"
 
 That line is usually the last one of the initialization process. It usually means your server is working correctly, that is not a blocking error. If you can't connect to your server at that point, it's probably a network issue.
 
 
-##### Server is stuck at "Could not load config ..."
+#### Server is stuck at "Could not load config ..."
 
 If you see something like this:
 
