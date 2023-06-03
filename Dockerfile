@@ -67,8 +67,6 @@ COPY default_config.cfg ${STEAMAPPDIR}/default_config.cfg
 
 WORKDIR ${STEAMAPPDIR}
 
-VOLUME ${STEAMAPPDIR}
-
 # Check for message to see if server is ready
 HEALTHCHECK --interval=10s --timeout=5s \
     CMD grep "Steamworks Server IP discovered" "${STEAMAPPDIR}/entry.log" || exit 1
