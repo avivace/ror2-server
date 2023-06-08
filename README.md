@@ -14,7 +14,7 @@ You need [Docker](https://docs.docker.com/get-docker/) installed. On Debian syst
 Run the Docker container with:
 
 ```bash
-docker run -p 27015:27015/udp avivace/ror2server:latest
+docker run --rm -p 27015:27015/udp avivace/ror2server:latest
 ```
 
 Players need to start Risk of Rain 2, open the console pressing <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>\`</kbd> and insert this command:
