@@ -4,7 +4,7 @@
 
 
 > [!CAUTION]
-> This project relies on the official 'Risk of Rain 2 Dedicated Server' Steam app. Among all the other embarassing things Hopoo/Gearbox/Take-Two did to ruin this game, they also [stopped updating the dedicated server](https://steamdb.info/app/1180760/depots/?branch=public) in May 26, 2022. The only way to host a dedicated server now is to [downgrade](https://github.com/risk-of-thunder/RoR2VersionSelector).
+> This project relies on the official 'Risk of Rain 2 Dedicated Server' Steam app. Among all the other embarassing things Hopoo/Gearbox/Take-Two did to ruin this game, they also [stopped updating the dedicated server](https://steamdb.info/app/1180760/depots/?branch=public) in May 26, 2022. The only way to join an hosted dedicated server now is to [downgrade](https://github.com/risk-of-thunder/RoR2VersionSelector).
 
 
 Host your Risk of Rain 2 dedicated server anywhere using Docker. Powered by Wine and the X virtual framebuffer to seamlessy run on Linux machines.
