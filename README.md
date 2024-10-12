@@ -2,6 +2,11 @@
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/avivace/ror2server?style=flat-square)](https://hub.docker.com/r/avivace/ror2server)
 
+
+> [!CAUTION]
+> This project relies on the official 'Risk of Rain 2 Dedicated Server' Steam app. Among all the other embarassing things Hopoo/Gearbox/Take-Two did to ruin this game, they also stopped updating the dedicated server in May 26, 2022. The only way to host a dedicated server now is to [downgrade](https://github.com/risk-of-thunder/RoR2VersionSelector).
+
+
 Host your Risk of Rain 2 dedicated server anywhere using Docker. Powered by Wine and the X virtual framebuffer to seamlessy run on Linux machines.
 
 [Guide on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=2077564253).
